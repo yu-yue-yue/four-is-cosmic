@@ -6,7 +6,8 @@ function getCosmicSequence() {
         number = convertToWords(number).length;
         arr.push(number); 
     }
-
+    document.getElementById('displayArea').innerText = number;
+    console.log(arr);
     return arr;
 }
 
