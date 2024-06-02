@@ -1,34 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Four Is Cosmic</title>
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #dccced;
-    color: #ffffff;
-  }
-  .box {
-    width: 400px;
-    height: 200px;
-    background-color: #07083b;
-    border: 2px solid #333;
-    text-align: center;
-    line-height: 200px;
-    font-size: 24px;
-    font-family: Courier New, monospace;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Four Is Cosmic</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body> 
-<div class="box">Enter a Number:</div>
+<body>
+    <div class="container">
+        <h1>Enter a Number</h1>
+        <input type="number" id="numberInput" placeholder="Enter a number">
+        <button onclick="displayNumber()">Submit</button>
+        <p id="displayArea"></p>
+    </div>
+    <script src="cosmic-script.js"></script>
 </body>
 </html>
-
