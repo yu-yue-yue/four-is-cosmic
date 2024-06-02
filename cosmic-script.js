@@ -1,5 +1,7 @@
 function getCosmicSequence() {
-    var number = document.getElementById('numberInput').value;
+    var num = document.getElementById('numberInput').value;
+    if (Number.isNaN
+    var number = BigInt(num); 
     document.getElementById('displayArea').innerText = number;
     var arr = [number];
     while (number != 4) {
