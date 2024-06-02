@@ -1,7 +1,7 @@
 function getCosmicSequence() {
     var num = document.getElementById('numberInput').value;
     // deal with edge case of not digits
-    let isNum = /^\d+$/.test(val);
+    let isNum = /^\d+$/.test(num);
     if (!isNum) {
         document.getElementById('displayArea').innerText = "Please only input digits!";
         return "Please only input digits!";
