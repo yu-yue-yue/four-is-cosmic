@@ -1,9 +1,12 @@
 function getCosmicSequence() {
     var num = document.getElementById('numberInput').value;
     // deal with edge case of not digits
+    let isnum = /^\d+$/.test(val);
+    if (!isnum) {
+        document.getElementById('displayArea').innerText = "Please only input digits!";
+    }
     
     var number = BigInt(num); 
-    document.getElementById('displayArea').innerText = number;
     var arr = [number];
     while (number != 4) {
         number = convertToWords(number).length;
@@ -28,13 +31,13 @@ function convertToWords(num) {
 function convert(num) {
     if (num < 10) return units[num];
     if (num < 20) return teens[num - 10];
-    if (num < 100) return tens[Math.floor(num / 10)] + (num % 10 !== 0 ? " " + units[num % 10] : "");
-    if (num < 1000) return units[Math.floor(num / 100)] + " Hundred" + (num % 100 !== 0 ? " " + convert(num % 100) : "");
+    if (num < 100) return tens[Math.floor(num / 10)] + (num % 10 !== 0 ? "" + units[num % 10] : "");
+    if (num < 1000) return units[Math.floor(num / 100)] + "Hundred" + (num % 100 !== 0 ? "" + convert(num % 100) : "");
     
     for (let i = 1; i < scales.length; i++) {
         let unitValue = 1000 ** i;
         if (num < unitValue * 1000) {
-            return convert(Math.floor(num / unitValue)) + " " + scales[i] + (num % unitValue !== 0 ? " " + convert(num % unitValue) : "");
+            return convert(Math.floor(num / unitValue)) + "" + scales[i] + (num % unitValue !== 0 ? "" + convert(num % unitValue) : "");
         }
     }
 }
