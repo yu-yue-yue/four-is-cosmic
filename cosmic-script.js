@@ -4,6 +4,7 @@ function getCosmicSequence() {
     let isnum = /^\d+$/.test(val);
     if (!isnum) {
         document.getElementById('displayArea').innerText = "Please only input digits!";
+        return "Please only input digits!"
     }
     
     var number = BigInt(num); 
