@@ -32,7 +32,7 @@ function getEnglishCosmicSequence() {
     }
 
     var displayArea = document.getElementById('english-display');
-    displayArea.innerText = outputCosmicSequence(arr);
+    displayArea.innerText = outputEnglishCosmicSequence(arr);
     resizeBox(displayArea);
     
     return arr;
@@ -49,24 +49,33 @@ function getFrenchCosmicSequence() {
     
     var number = Number(num); 
     var arr = [number];
-    while (number != 4) {
+    while (!arr.includes(number)) {
         number = convertToFrenchWords(number).length;
         arr.push(number); 
     }
 
     var displayArea = document.getElementById('french-display');
-    displayArea.innerText = outputCosmicSequence(arr);
+    displayArea.innerText = outputFrenchCosmicSequence(arr);
     resizeBox(displayArea);
     console.log(arr);
     return arr;
 }
 
-function outputCosmicSequence(arr) {
+function outputEnglishCosmicSequence(arr) {
     var output = "" + arr[0];
     for (let i = 1; i < arr.length; i++) {
         output = output.concat(" is ", arr[i], ".\n", arr[i]);
     }
     output += " is cosmic.";
+    return output;
+}
+
+function outputFrenchCosmicSequence(arr) {
+    var output = "" + arr[0];
+    for (let i = 1; i < arr.length; i++) {
+        output = output.concat(" est ", arr[i], ".\n", arr[i]);
+    }
+    output += " n'est pas cosmique.";
     return output;
 }
 
