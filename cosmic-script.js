@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function getEnglishCosmicSequence() {
-    var num = document.getElementById('numberInput').value;
+    var num = document.getElementById('numberInputEnglish').value;
     // deal with edge case of not digits
     let isNum = /^\d+$/.test(num);
     if (!isNum) {
@@ -39,7 +39,7 @@ function getEnglishCosmicSequence() {
 }
 
 function getFrenchCosmicSequence() {
-    var num = document.getElementById('numberInput').value;
+    var num = document.getElementById('numberInputFrench').value;
     // deal with edge case of not digits
     let isNum = /^\d+$/.test(num);
     if (!isNum) {
