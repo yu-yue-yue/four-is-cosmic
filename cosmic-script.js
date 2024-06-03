@@ -4,7 +4,7 @@ function getCosmicSequence() {
     let isNum = /^\d+$/.test(num);
     if (!isNum) {
         document.getElementById('displayArea').innerText = "Digit input only";
-        return "Digit input only";
+        return 0;
     }
     
     var number = Number(num); 
@@ -13,9 +13,18 @@ function getCosmicSequence() {
         number = convertToWords(number).length;
         arr.push(number); 
     }
-    document.getElementById('displayArea').innerText = number;
-    console.log(arr);
+    document.getElementById('displayArea').innerText = outputCosmicSequence(arr);
+    
     return arr;
+}
+
+function outputCosmicSequence(arr) {
+    var output = arr[0];
+    for (let i = 1; i < arr.length; i++) {
+        output.concat(" is ", arr[i], ". ", arr[i]);
+    }
+    output.concat(" is cosmic.");
+    return output;
 }
 
 
