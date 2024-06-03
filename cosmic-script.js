@@ -20,7 +20,7 @@ function getEnglishCosmicSequence() {
     // deal with edge case of not digits
     let isNum = /^\d+$/.test(num);
     if (!isNum) {
-        document.getElementById('displayArea').innerText = "Digit input only";
+        document.getElementById('english-display').innerText = "Digit input only";
         return 0;
     }
     
@@ -31,7 +31,7 @@ function getEnglishCosmicSequence() {
         arr.push(number); 
     }
 
-    var displayArea = document.getElementById('displayArea');
+    var displayArea = document.getElementById('english-display');
     displayArea.innerText = outputCosmicSequence(arr);
     resizeBox(displayArea);
     
@@ -43,7 +43,7 @@ function getFrenchCosmicSequence() {
     // deal with edge case of not digits
     let isNum = /^\d+$/.test(num);
     if (!isNum) {
-        document.getElementById('displayArea').innerText = "Digit input only";
+        document.getElementById('french-display').innerText = "Digit input only";
         return 0;
     }
     
@@ -54,7 +54,7 @@ function getFrenchCosmicSequence() {
         arr.push(number); 
     }
 
-    var displayArea = document.getElementById('displayArea');
+    var displayArea = document.getElementById('french-display');
     displayArea.innerText = outputCosmicSequence(arr);
     resizeBox(displayArea);
     
