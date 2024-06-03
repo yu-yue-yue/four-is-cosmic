@@ -2,6 +2,7 @@ body {
     font-family: Arial, sans-serif;
     font-size: 18px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -41,5 +42,5 @@ button {
     background-color: #f9f9f9;
     word-wrap: break-word;
     display: inline-block;
-    max-width: 100%;
+    width: 90%;
 }
