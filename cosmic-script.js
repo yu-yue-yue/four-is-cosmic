@@ -49,6 +49,7 @@ function getFrenchCosmicSequence() {
     
     var number = Number(num); 
     var arr = [number];
+    number = convertToFrenchWords(number).length;
     while (!arr.includes(number)) {
         number = convertToFrenchWords(number).length;
         arr.push(number); 
