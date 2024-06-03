@@ -13,7 +13,10 @@ function getCosmicSequence() {
         number = convertToWords(number).length;
         arr.push(number); 
     }
-    document.getElementById('displayArea').innerText = outputCosmicSequence(arr);
+
+    var outputBox = document.getElementById('displayArea');
+    outputBox.innerText = outputCosmicSequence(arr);
+    resizeBox(outputBox);
     
     return arr;
 }
@@ -50,5 +53,11 @@ function convert(num) {
             return convert(Math.floor(num / unitValue)) + "" + scales[i] + (num % unitValue !== 0 ? "" + convert(num % unitValue) : "");
         }
     }
+}
+
+function resizeBox(element) {
+    element.style.display = 'inline-block';
+    element.style.width = 'auto'; // Set width to auto for resizing
+    element.style.width = (element.scrollWidth + 20) + 'px'; // Add padding to width
 }
 
