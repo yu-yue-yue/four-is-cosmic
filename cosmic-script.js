@@ -58,6 +58,7 @@ function convert(num) {
 function resizeBox(element) {
     element.style.display = 'inline-block';
     element.style.height = 'auto'; // Set width to auto for resizing
-    element.style.height = (element.scrollWidth + 20) + 'px'; // Add padding to width
+    element.style.paddng = 10px;
+    element.style.height = (element.scrollHeight + 20) + 'px'; // Add padding to width
 }
 
