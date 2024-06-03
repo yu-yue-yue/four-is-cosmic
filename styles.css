@@ -50,7 +50,7 @@ button {
     cursor: pointer;
 }
 
-#displayArea {
+.displayArea {
     margin-top: 20px;
     font-family: Courier New, monospace;
     font-size: 16px;
