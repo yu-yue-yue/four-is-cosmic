@@ -7,9 +7,9 @@ function getCosmicSequence() {
         return "Please only input digits!";
     }
     
-    var number = BigInt(num); 
+    var number = Number(num); 
     var arr = [number];
-    while (number != 4n) {
+    while (number != 4) {
         number = BigInt(convertToWords(number).length);
         arr.push(number); 
     }
@@ -30,15 +30,15 @@ function convertToWords(num) {
 }
 
 function convert(num) {
-    if (num < 10n) return units[num];
-    if (num < 20n) return teens[num - 10n];
-    if (num < 100n) return tens[Math.floor(num / 10n)] + (num % 10n !== 0n ? "" + units[num % 10n] : "");
-    if (num < 1000n) return units[Math.floor(num / 100n)] + "Hundred" + (num % 100n !== 0n ? "" + convert(num % 100n) : "");
+    if (num < 10) return units[num];
+    if (num < 20) return teens[num - 10];
+    if (num < 100) return tens[Math.floor(num / 10)] + (num % 10 !== 0 ? "" + units[num % 10] : "");
+    if (num < 1000) return units[Math.floor(num / 100)] + "Hundred" + (num % 100 !== 0 ? "" + convert(num % 100) : "");
     
-    for (let i = 1n; i < scales.length; i++) {
-        let unitValue = 1000n ** i;
-        if (num < unitValue * 1000n) {
-            return convert(Math.floor(num / unitValue)) + "" + scales[i] + (num % unitValue !== 0n ? "" + convert(num % unitValue) : "");
+    for (let i = 1; i < scales.length; i++) {
+        let unitValue = 1000 ** i;
+        if (num < unitValue * 1000) {
+            return convert(Math.floor(num / unitValue)) + "" + scales[i] + (num % unitValue !== 0 ? "" + convert(num % unitValue) : "");
         }
     }
 }
