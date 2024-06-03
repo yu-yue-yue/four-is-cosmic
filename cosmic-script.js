@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-function getCosmicSequence() {
+function getEnglishCosmicSequence() {
     var num = document.getElementById('numberInput').value;
     // deal with edge case of not digits
     let isNum = /^\d+$/.test(num);
@@ -27,7 +27,30 @@ function getCosmicSequence() {
     var number = Number(num); 
     var arr = [number];
     while (number != 4) {
-        number = convertToWords(number).length;
+        number = convertToEnglishWords(number).length;
+        arr.push(number); 
+    }
+
+    var displayArea = document.getElementById('displayArea');
+    displayArea.innerText = outputCosmicSequence(arr);
+    resizeBox(displayArea);
+    
+    return arr;
+}
+
+function getFrenchCosmicSequence() {
+    var num = document.getElementById('numberInput').value;
+    // deal with edge case of not digits
+    let isNum = /^\d+$/.test(num);
+    if (!isNum) {
+        document.getElementById('displayArea').innerText = "Digit input only";
+        return 0;
+    }
+    
+    var number = Number(num); 
+    var arr = [number];
+    while (number != 4) {
+        number = convertToFrenchWords(number).length;
         arr.push(number); 
     }
 
@@ -53,12 +76,12 @@ const teens = ["Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Si
 const tens = ["", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"];
 const scales = ["", "Thousand", "Million", "Billion", "Trillion", "Quadrillion", "Quintillion", "Sextillion", "Septillion", "Octillion", "Nonillion"];
 
-function convertToWords(num) {
+function convertToEnglishWords(num) {
     if (num === 0) return "Zero";
-    return convert(num).trim();
+    return convertEnglish(num).trim();
 }
 
-function convert(num) {
+function convertEnglish(num) {
     if (num < 10) return units[num];
     if (num < 20) return teens[num - 10];
     if (num < 100) return tens[Math.floor(num / 10)] + (num % 10 !== 0 ? "" + units[num % 10] : "");
@@ -70,6 +93,68 @@ function convert(num) {
             return convert(Math.floor(num / unitValue)) + "" + scales[i] + (num % unitValue !== 0 ? "" + convert(num % unitValue) : "");
         }
     }
+}
+
+const unites = ["", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf"];
+const adolescents = ["dix", "onze", "douze", "treize", "quatorze", "quinze", "seize", "dixsept", "dixhuit", "dixneuf"];
+const dizaines = ["", "dix", "vingt", "trente", "quarante", "cinquante", "soixante", "soixante", "quatrevingt", "quatrevingt"];
+const centaines = ["", "cent", "deuxcent", "troiscent", "quatrecent", "cinqcent", "sixcent", "septcent", "huitcent", "neufcent"];
+const grandsNombres = ["", "mille", "million", "milliard", "billion", "billiard", "trillion", "trilliard", "quadrillion", "quadrilliard", "quintillion", "quintilliard", "sextillion", "sextilliard", "septillion", "septilliard", "octillion", "octilliard", "nonillion"];
+
+function convertToFrenchWords(n) {
+    if (n === 0) return "zéro";
+
+    let resultat = "";
+
+    function convertirMoinsDeMille(num) {
+        let str = "";
+
+        // Hundreds
+        if (Math.floor(num / 100) > 0) {
+            str += centaines[Math.floor(num / 100)] + (num % 100 === 0 ? "" : "");
+        }
+
+        // Tens and Ones
+        num = num % 100;
+        if (num < 10) {
+            str += unites[num];
+        } else if (num < 20) {
+            str += adolescents[num - 10];
+        } else {
+            let dizainesValeur = Math.floor(num / 10);
+            let unitesValeur = num % 10;
+            if (dizainesValeur === 7 || dizainesValeur === 9) {
+                str += dizaines[dizainesValeur] + "" + adolescents[unitesValeur];
+            } else {
+                str += dizaines[dizainesValeur] + (unitesValeur === 0 ? "" : (dizainesValeur === 8 ? "" : "") + unites[unitesValeur]);
+            }
+        }
+
+        return str.trim();
+    }
+
+    function diviserEnMorceaux(num) {
+        const morceaux = [];
+        while (num > 0) {
+            morceaux.push(num % 1000);
+            num = Math.floor(num / 1000);
+        }
+        return morceaux;
+    }
+
+    const morceaux = diviserEnMorceaux(n);
+    for (let i = 0; i < morceaux.length; i++) {
+        if (morceaux[i] !== 0) {
+            let motMorceau = convertirMoinsDeMille(morceaux[i]);
+            if (i === 1 && morceaux[i] === 1) {
+                resultat = grandsNombres[i] + "" + resultat;
+            } else {
+                resultat = motMorceau + (grandsNombres[i] ? "" + grandsNombres[i] : "") + (resultat ? "" + resultat : "");
+            }
+        }
+    }
+
+    return resultat.trim();
 }
 
 function resizeBox(element) {
