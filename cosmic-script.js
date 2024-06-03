@@ -57,7 +57,7 @@ function getFrenchCosmicSequence() {
     var displayArea = document.getElementById('french-display');
     displayArea.innerText = outputCosmicSequence(arr);
     resizeBox(displayArea);
-    
+    console.log(arr);
     return arr;
 }
 
