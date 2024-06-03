@@ -3,7 +3,7 @@ function getCosmicSequence() {
     // deal with edge case of not digits
     let isNum = /^\d+$/.test(num);
     if (!isNum) {
-        document.getElementById('displayArea').innerText = "Digit input only!";
+        document.getElementById('displayArea').innerText = "Digit input only";
         return "Digit input only";
     }
     
