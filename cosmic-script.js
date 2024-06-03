@@ -10,7 +10,7 @@ function getCosmicSequence() {
     var number = Number(num); 
     var arr = [number];
     while (number != 4) {
-        number = BigInt(convertToWords(number).length);
+        number = convertToWords(number).length;
         arr.push(number); 
     }
     document.getElementById('displayArea').innerText = number;
