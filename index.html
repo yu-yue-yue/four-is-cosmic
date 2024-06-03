@@ -11,15 +11,16 @@
         <h1>what's cosmic?</h1>
     </div>
     <div class="tabs">
-        <button class="tab-link active" data-tab="tab1">english</button>
-        <button class="tab-link" data-tab="tab2">english tree</button>
+        <button class="tab-link active" data-tab="tab1">English</button>
+        <button class="tab-link" data-tab="tab2">English tree</button>
+        <button class="tab-link" data-tab="tab3">French</button>
     </div>
 
     <div class="tab-content active" id="tab1">
         <div class="container">
             <h2>four is cosmic.</h1>
             <input type="number" id="numberInput" placeholder="enter a number:">
-            <button onclick="getCosmicSequence()">Submit</button>
+            <button onclick="getEnglishCosmicSequence()">Submit</button>
             <br>
             <p id="displayArea"></p>
             <script src="cosmic-script.js"></script>
@@ -32,7 +33,16 @@
             <script src="tree-script.js"></script>
         </div>
     </div>
-    
+    <div class="tab-content" id="tab3">
+        <div class="container">
+            <h2>quatre n'est pas cosmic.</h1>
+            <input type="number" id="numberInput" placeholder="entrez une chiffre:">
+            <button onclick="getFrenchCosmicSequence()">Submit</button>
+            <br>
+            <p id="displayArea"></p>
+            <script src="cosmic-script.js"></script>
+         </div>
+    </div>
    
 </body>
 </html>
