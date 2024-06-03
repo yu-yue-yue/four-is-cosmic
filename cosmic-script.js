@@ -14,9 +14,9 @@ function getCosmicSequence() {
         arr.push(number); 
     }
 
-    var outputBox = document.getElementById('displayArea');
-    outputBox.innerText = outputCosmicSequence(arr);
-    resizeBox(outputBox);
+    var displayArea = document.getElementById('displayArea');
+    displayArea.innerText = outputCosmicSequence(arr);
+    resizeBox(displayArea);
     
     return arr;
 }
