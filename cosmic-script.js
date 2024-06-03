@@ -24,7 +24,7 @@ function getCosmicSequence() {
 function outputCosmicSequence(arr) {
     var output = "" + arr[0];
     for (let i = 1; i < arr.length; i++) {
-        output = output.concat(" is ", arr[i], ". ", arr[i]);
+        output = output.concat(" is ", arr[i], ".\n", arr[i]);
     }
     output.concat(" is cosmic.");
     return output;
