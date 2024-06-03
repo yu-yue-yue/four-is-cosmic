@@ -5,7 +5,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #ffb53c;
+    background-color:  #b5d58c ;
     margin: 0;
 }
 
@@ -44,28 +44,29 @@ button {
 
 .tabs {
     display: flex;
-    border-bottom: 2px solid #ccc;
+    border: 2px solid black
 }
 
 .tab-link {
-    background: none;
+    font-family: Arial, sans-serif;
+    background: black;
+    color: white;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
     outline: none;
     transition: background-color 0.3s;
 }
 
 .tab-link:hover,
 .tab-link.active {
-    background-color: #f0f0f0;
+    background-color: #026847 ;
 }
 
 .tab-content {
     display: none;
-    padding: 20px;
-    border: 1px solid #ccc;
+    padding: 20px;=
     border-top: none;
 }
 
