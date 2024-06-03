@@ -7,13 +7,26 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h2>four is cosmic.</h1>
-        <input type="number" id="numberInput" placeholder="enter a number:">
-        <button onclick="getCosmicSequence()">Submit</button>
-        <br>
-        <p id="displayArea"></p>
+    <div class="tabs">
+        <button class="tab-link active" data-tab="tab1">play</button>
+        <button class="tab-link" data-tab="tab2">display</button>
     </div>
-    <script src="cosmic-script.js"></script>
+
+    <div class="tab-content active" id="tab1">
+        <div class="container">
+            <h2>choose your player.</h1>
+            <input type="number" id="numberInput" placeholder="enter a number:">
+            <button onclick="getCosmicSequence()">Submit</button>
+            <br>
+            <p id="displayArea"></p>
+            <script src="cosmic-script.js"></script>
+         </div>
+    </div>
+    <div class="tab-content" id="tab2">
+        <h2>/h2>
+        <p>This is the content for tab 2.</p>
+    </div>
+    
+   
 </body>
 </html>
