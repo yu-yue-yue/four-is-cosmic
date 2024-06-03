@@ -7,6 +7,7 @@ body {
     height: 100vh;
     background-color:  #b5d58c ;
     margin: 0;
+    overflow-y: scroll;
 }
 
 .top-bar {
