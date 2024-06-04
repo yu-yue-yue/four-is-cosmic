@@ -51,10 +51,10 @@ function getFrenchCosmicSequence() {
     var arr = [number];
     number = convertToFrenchWords(number).length;
     while (!arr.includes(number)) {
-        number = convertToFrenchWords(number).length;
         arr.push(number); 
+        number = convertToFrenchWords(number).length;
     }
-
+    arr.push(number); 
     var displayArea = document.getElementById('french-display');
     displayArea.innerText = outputFrenchCosmicSequence(arr);
     resizeBox(displayArea);
