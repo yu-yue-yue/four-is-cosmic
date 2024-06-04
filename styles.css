@@ -1,18 +1,12 @@
 body {
     font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color:  #b5d58c ;
+    background-color:   #e8f0bf  ;
     margin: 0;
-    overflow-y: hidden;
 }
 
 .top-bar {
     width: 100%;
-    background-color: #026847; 
+    background-color: #02422d ; 
     color: white;
     text-align: left;
     padding: 15px 0;
@@ -23,6 +17,15 @@ body {
     
 }
 
+.content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 140px;
+}
+
 .title {
     margin: 0;
     font-size: 24px;
@@ -30,7 +33,6 @@ body {
 }
 
 .container {
-    overflow-y: auto;
     text-align: center;
     background: white;
     padding: 30px;
@@ -40,7 +42,8 @@ body {
 
 .hidden-content {
     height: 2000px; /* Adjust this value as needed */
-    visibility: hidden; /* Make it invisible */
+    background-color: #000;
+    width: 400px;
 }
 
 input {
@@ -87,12 +90,12 @@ button {
 
 .tab-link:hover,
 .tab-link.active {
-    background-color: #026847 ;
+    background-color:  #02422d  ;
 }
 
 .tab-content {
     display: none;
-    padding: 20px;=
+    padding: 20px;
     border-top: none;
 }
 
