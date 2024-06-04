@@ -88,10 +88,10 @@ const scales = ["", "Thousand", "Million", "Billion", "Trillion", "Quadrillion",
 
 function convertToEnglishWords(num) {
     if (num === 0) return "Zero";
-    return convertEnglish(num).trim();
+    return convert(num).trim();
 }
 
-function convertEnglish(num) {
+function convert(num) {
     if (num < 10) return units[num];
     if (num < 20) return teens[num - 10];
     if (num < 100) return tens[Math.floor(num / 10)] + (num % 10 !== 0 ? "" + units[num % 10] : "");
@@ -139,7 +139,7 @@ function convertToFrenchWords(n) {
                 str += dizaines[dizainesValeur] + (unitesValeur === 0 ? "" : (dizainesValeur === 8 ? "" : "") + unites[unitesValeur]);
             }
         }
-
+        
         return str.trim();
     }
 
@@ -163,7 +163,7 @@ function convertToFrenchWords(n) {
             }
         }
     }
-
+    console.log(resultat);
     return resultat.trim();
 }
 
