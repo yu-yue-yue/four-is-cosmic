@@ -4,6 +4,29 @@ body {
     margin: 0;
 }
 
+.node circle {
+    fill: #999;
+    stroke: #555;
+    stroke-width: 1.5px;
+}
+
+.node four-circle {
+    fill: lightcoral;
+    stroke: coral;
+    stroke-width: 1.5px;
+}
+
+.node text {
+    font: 12px sans-serif;
+    pointer-events: none;
+}
+
+.link {
+    fill: none;
+    stroke: #555;
+    stroke-width: 1.5px;
+    marker-end: url(#end-arrow);
+}
 .top-bar {
     width: 100%;
     background-color: #02422d ; 
