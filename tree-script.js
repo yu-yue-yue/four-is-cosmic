@@ -19,68 +19,57 @@ svg.append("defs").append("marker")
     .attr("d", "M0,-5L10,0L0,5")
     .attr("fill", "#555");
 
-// Example adjacency list
-adjacencyList = {
-    
-};
 
+let nodes = [];
+let links = [];
 
 function generateEnglishTree(num) {
-
-    adjacencyList = {
-    
-    };
-
+    nodes = [];
+    links = [];
     for (let i = 0; i <= num; i++) {
-        adjacencyList[i + ""] = [convertToEnglishWords(i).length + ""];
+        let source = i + "";
+        let target = convertToEnglishWords(i).length + "";
+        nodes.push(source);
+        links.push({source, target});
     }
-
+    
     draw();
-    console.log("english");
+
 }
 
 function generateFrenchTree(num) {
-    adjacencyList = {
-    
-    };
-
+    nodes = [];
+    links = [];
     for (let i = 0; i <= num; i++) {
-        adjacencyList[i + ""] = [convertToFrenchWords(i).length + ""];
+        let source = i + "";
+        let target = convertToFrenchWords(i).length + "";
+        nodes.push(source);
+        links.push({source, target});
     }
-
+    
     draw();
-    console.log("french");
+
+
 }
 
 function generateSpanishTree(num) {
-    adjacencyList = {
-    
-    };
-
+    nodes = [];
+    links = [];
     for (let i = 0; i <= num; i++) {
-        adjacencyList[i + ""] = [convertToSpanishWords(i).length + ""];
+        let source = i + "";
+        let target = convertToFrenchWords(i).length + "";
+        nodes.push(source);
+        links.push({source, target});
     }
-
+    
     draw();
-    console.log("spanish");
 }
 
 function draw() {
-
-    // Convert adjacency list to edge list
-    const nodes = Object.keys(adjacencyList);
-    const links = [];
-
-    nodes.forEach(source => {
-        adjacencyList[source].forEach(target => {
-            links.push({source, target});
-        });
-    });
-
     // Set up the simulation
     const simulation = d3.forceSimulation(nodes.map(id => ({id})))
-        .force("link", d3.forceLink(links).id(d => d.id).distance(100))
-        .force("charge", d3.forceManyBody().strength(-40))
+        .force("link", d3.forceLink(links).id(d => d.id).distance(50))
+        .force("charge", d3.forceManyBody().strength(-60))
         .force("center", d3.forceCenter(width / 2, height / 2));
 
     // Draw links (edges)
@@ -140,4 +129,7 @@ function draw() {
         d.fx = null;
         d.fy = null;
     }
+
+
 }
+

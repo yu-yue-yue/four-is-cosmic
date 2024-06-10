@@ -189,7 +189,7 @@ function convertToFrenchWords(n) {
 const unidades = ["cero", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve"];
 const adolescentes = ["diez", "once", "doce", "trece", "catorce", "quince", "dieciséis", "diecisiete", "dieciocho", "diecinueve"];
 const decenas = ["", "", "veinte", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa"];
-const centenas = ["", "ciento", "doscientos", "trescientos", "cuatrocientos", "quinientos", "seiscientos", "setecientos", "ochocientos", "novecientos"];
+const hundreds = ["", "ciento", "doscientos", "trescientos", "cuatrocientos", "quinientos", "seiscientos", "setecientos", "ochocientos", "novecientos"];
 
 const numerosGrandes = [
     "mil", "millón", "mil millones", "billón", "mil billones", "trillón", 
@@ -222,7 +222,7 @@ function convertToSpanishWords(num) {
         let centena = Math.floor(n / 100);
         let resto = n % 100;
         if (centena === 1 && resto === 0) return "cien";
-        return centenas[centena] + (resto === 0 ? "" : "" + obtenerDecenas(resto));
+        return hundreds[obtenerCentenas] + (resto === 0 ? "" : "" + obtenerDecenas(resto));
     }
 
     function obtenerMiles(n) {
