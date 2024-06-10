@@ -17,13 +17,14 @@
     </header>
     <div class="content">
         <div class="tabs">
-            <button class="tab-link active" data-tab="tab1">English</button>
-            <button class="tab-link" data-tab="tab2">Tree</button>
-            <button class="tab-link" data-tab="tab3">French</button>
+            <button class="tab-link active" data-tab="english-tab">English</button>
+            <button class="tab-link" data-tab="french-tab">French</button>
+            <button class="tab-link" data-tab="spanish-tab">Spanish</button>
+            <button class="tab-link" data-tab="tree-tab">Tree</button>
             <script src="main.js"></script>
         </div>
 
-        <div class="tab-content active" id="tab1">
+        <div class="tab-content active" id="english-tab">
             <div class="container">
                 <h2>four is cosmic.</h1>
                 <input type="number" id="numberInputEnglish" placeholder="enter a number:">
@@ -34,17 +35,7 @@
             </div>
         </div>
 
-        <div class="tab-content" id="tab2">
-            <div class="container">
-                <h2>four is the root.</h2>
-                <div id="tree"></div>
-                <svg width="960" height="600"></svg>
-                <script src="https://d3js.org/d3.v6.min.js"></script>
-                <script src="tree-script.js"></script>
-            </div>
-        </div>
-        
-        <div class="tab-content" id="tab3">
+        <div class="tab-content" id="french-tab">
             <div class="container">
                 <h2>quatre n'est pas cosmique.</h1>
                 <input type="number" id="numberInputFrench" placeholder="entrez une chiffre:">
@@ -54,6 +45,32 @@
                 <script src="cosmic-script.js"></script>
             </div>
         </div>
+
+        <div class="tab-content" id="spanish-tab">
+            <div class="container">
+                <h2>cinco es cósmico.</h1>
+                <input type="number" id="numberInputSpanish" placeholder="ingrese un numero:">
+                <button onclick="getSpanishCosmicSequence()">Submit</button>
+                <br>
+                <p class="displayArea" id="spanish-display"></p>
+                <script src="cosmic-script.js"></script>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="tree-tab">
+            <div class="container">
+                <button onclick="generateEnglishTree(30)">English</button>
+                <button onclick="generateFrenchTree(30)">French</button>
+                <button onclick="generateSpanishTree(30)">Spanish</button>
+                
+                <div id="tree"></div>
+                <svg width="960" height="600"></svg>
+                
+                <script src="https://d3js.org/d3.v6.min.js"></script>
+                <script src="tree-script.js"></script>
+            </div>
+        </div>
+        
     </div>
 </body>
 </html>

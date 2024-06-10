@@ -1,20 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const tabLinks = document.querySelectorAll('.tab-link');
-    const tabContents = document.querySelectorAll('.tab-content');
-
-    tabLinks.forEach(tabLink => {
-        tabLink.addEventListener('click', () => {
-            // Remove active class from all tabs and contents
-            tabLinks.forEach(link => link.classList.remove('active'));
-            tabContents.forEach(content => content.classList.remove('active'));
-
-            // Add active class to the clicked tab and the corresponding content
-            tabLink.classList.add('active');
-            document.getElementById(tabLink.getAttribute('data-tab')).classList.add('active');
-        });
-    });
-});
-
 function getEnglishCosmicSequence() {
     var num = document.getElementById('numberInputEnglish').value;
     // deal with edge case of not digits
@@ -62,6 +45,30 @@ function getFrenchCosmicSequence() {
     return arr;
 }
 
+function getSpanishCosmicSequence() {
+    var num = document.getElementById('numberInputSpanish').value;
+    // deal with edge case of not digits
+    let isNum = /^\d+$/.test(num);
+    if (!isNum) {
+        document.getElementById('spanish-display').innerText = "Digit input only";
+        return 0;
+    }
+    
+    var number = Number(num); 
+    var arr = [number];
+    number = convertToSpanishWords(number).length;
+    while (!arr.includes(number)) {
+        arr.push(number); 
+        number = convertToSpanishWords(number).length;
+    }
+    if (number != 5) arr.push(number); 
+    var displayArea = document.getElementById('spanish-display');
+    displayArea.innerText = outputSpanishCosmicSequence(arr);
+    resizeBox(displayArea);
+    console.log(arr);
+    return arr;
+}
+
 function outputEnglishCosmicSequence(arr) {
     var output = "" + arr[0];
     for (let i = 1; i < arr.length; i++) {
@@ -77,6 +84,19 @@ function outputFrenchCosmicSequence(arr) {
         output = output.concat(" est ", arr[i], ".\n", arr[i]);
     }
     output += " n'est pas cosmique.";
+    return output;
+}
+
+function outputSpanishCosmicSequence(arr) {
+    var output = "" + arr[0];
+    for (let i = 1; i < arr.length; i++) {
+        output = output.concat(" es ", arr[i], ".\n", arr[i]);
+    }
+    if (output.charAt(output.length - 1) == '5') {
+        output += " es cósmico.";
+    } else {
+        output += " no es cósmico."
+    }
     return output;
 }
 
@@ -163,9 +183,77 @@ function convertToFrenchWords(n) {
             }
         }
     }
-    console.log(resultat);
     return resultat.trim();
 }
+
+const unidades = ["cero", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve"];
+const adolescentes = ["diez", "once", "doce", "trece", "catorce", "quince", "dieciséis", "diecisiete", "dieciocho", "diecinueve"];
+const decenas = ["", "", "veinte", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa"];
+const centenas = ["", "ciento", "doscientos", "trescientos", "cuatrocientos", "quinientos", "seiscientos", "setecientos", "ochocientos", "novecientos"];
+
+const numerosGrandes = [
+    "mil", "millón", "mil millones", "billón", "mil billones", "trillón", 
+    "mil trillones", "cuatrillón", "mil cuatrillones", "quintillón", "mil quintillones",
+    "sextillón", "mil sextillones", "septillón", "mil septillones", "octillón", "mil octillones",
+    "nonillón", "mil nonillones"
+];
+
+function convertToSpanishWords(num) {
+    if (num < 0) return "Número fuera de rango";
+    if (num === 0) return unidades[0];
+    if (num > Number.MAX_SAFE_INTEGER) return "Número fuera de rango"; // Ajusted to the maximum safe integer in JavaScript
+
+    function obtenerUnidades(n) {
+        return unidades[n];
+    }
+
+    function obtenerDecenas(n) {
+        if (n < 10) return obtenerUnidades(n);
+        if (n < 20) return adolescentes[n - 10];
+        let decena = Math.floor(n / 10);
+        let unidad = n % 10;
+        if (unidad === 0) return decenas[decena];
+        if (decena === 2) return "veinti" + unidades[unidad];
+        return decenas[decena] + "y" + unidades[unidad];
+    }
+
+    function obtenerCentenas(n) {
+        if (n < 100) return obtenerDecenas(n);
+        let centena = Math.floor(n / 100);
+        let resto = n % 100;
+        if (centena === 1 && resto === 0) return "cien";
+        return centenas[centena] + (resto === 0 ? "" : "" + obtenerDecenas(resto));
+    }
+
+    function obtenerMiles(n) {
+        if (n < 1000) return obtenerCentenas(n);
+        let mil = Math.floor(n / 1000);
+        let resto = n % 1000;
+        if (mil === 1) return "mil" + (resto === 0 ? "" : "" + obtenerCentenas(resto));
+        return obtenerCentenas(mil) + "mil" + (resto === 0 ? "" : "" + obtenerCentenas(resto));
+    }
+
+    function obtenerNumerosGrandes(n, index) {
+        if (n < 1000) return obtenerMiles(n);
+        let divisor = 1000;
+        let indiceNumeroGrande = 0;
+        while (indiceNumeroGrande < index) {
+            divisor *= 1000;
+            indiceNumeroGrande++;
+        }
+        let cociente = Math.floor(n / divisor);
+        let resto = n % divisor;
+        let nombreNumeroGrande = numerosGrandes[index];
+        let prefijo = (cociente === 1) ? "un" : obtenerMiles(cociente) + "";
+        let resultado = prefijo + nombreNumeroGrande;
+        if (resto > 0) resultado += "" + obtenerNumerosGrandes(resto, index - 1);
+        return resultado;
+    }
+
+    let maxIndex = Math.floor(Math.log10(num) / 3) - 1;
+    return obtenerNumerosGrandes(num, maxIndex);
+}
+
 
 function resizeBox(element) {
     element.style.display = 'inline-block';
@@ -173,4 +261,3 @@ function resizeBox(element) {
     element.style.padding = '10px';
     element.style.height = (element.scrollHeight + 20) + 'px'; // Add padding to width
 }
-
